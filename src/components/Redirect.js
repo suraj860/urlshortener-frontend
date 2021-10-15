@@ -14,18 +14,22 @@ const instance = axios.create({
 
 });
 
-    async function short(){
-      try{
-        const response = await instance.get(`/redirection/${props.match.params.id}`)
-        .then(response => window.location.replace(response.data)).catch(err => {console.log(err)})
-        console.log(response)
-      }catch(error){
-        console.log(error)
-      }
-       
+
+React.useEffect(()=>{
+  async function short(){
+    try{
+      const response = await instance.get(`/redirection/${props.match.params.id}`)
+      .then(response => window.location.replace(response.data)).catch(err => {console.log(err)})
+      console.log(response)
+    }catch(error){
+      console.log(error)
     }
-   
-    short()
+     
+  }
+ 
+  short()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+},[])
    
     return (
         <>
